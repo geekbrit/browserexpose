@@ -17,8 +17,6 @@ def runProcess(exe):
     except subprocess.CalledProcessError, e:
         print '<b>something went wrong ' + str(e.returncode) + e.output + '</b>'
 
-#runProcess(['xauth', 'merge', '/home/user/peter/.Xauthority'])
-#op = runProcess(['ls', '-l'])
 op = runProcess(['wmctrl', '-ia', window])
 
 print op

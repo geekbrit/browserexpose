@@ -13,8 +13,6 @@ def runProcess(exe):
         pass #print '<b>something went wrong ' + str(e.returncode) + e.output + '</b>'
     return retval
 
-#runProcess(['xauth', 'merge', '/home/user/peter/.Xauthority'])
-
 windows = []
 
 op = runProcess(['wmctrl', '-lG'])
@@ -29,7 +27,8 @@ for l in lines:
         try:
             with open(words[0]+'.jpg'): pass
         except IOError:
-            runProcess(['wmctrl','-ia',words[0]])
-            runProcess(['convert','x:'+words[0], words[0]+'.jpg'])
+            #might be nice to spin these off into separate threads
+            runProcess(['wmctrl','-ia',words[0]])                   # raise it
+            runProcess(['convert','x:'+words[0], words[0]+'.jpg'])  # grab it
 
 print json.dumps( windows )
